@@ -22,5 +22,10 @@ public class Torre {
 		this.posicion = posicion;
 	}
 	
-
+	//Constructor por defecto para crear una torre negra en '8h'
+	public Torre(Color color) {
+		color = Color.NEGRO;
+		posicion = new Posicion(8,'h');
+		
+	}
 }
