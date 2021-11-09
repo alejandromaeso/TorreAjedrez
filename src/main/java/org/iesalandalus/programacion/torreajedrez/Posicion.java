@@ -9,6 +9,11 @@ public class Posicion {
 	
 	//Metodos
 	
+	public Posicion (int fila, char columna) {
+		setFila(fila);
+		setColumna(columna);
+	}
+	
 	public int getFila() {
 		return fila;
 	}
@@ -32,9 +37,6 @@ public class Posicion {
 		}
 		this.columna = columna;
 	}
-	
-	
-	//Ejercicio 6 - En caso de que la posición no sea la correcta no deben modificarse los atributos. Realiza un commit.
 	
 }
 
