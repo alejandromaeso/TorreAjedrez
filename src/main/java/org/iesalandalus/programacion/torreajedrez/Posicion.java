@@ -11,11 +11,13 @@ public class Posicion {
 	
 	//Metodos
 	
+	//Constructor para la posición
 	public Posicion (int fila, char columna) {
 		setFila(fila);
 		setColumna(columna);
 	}
 	
+	//Constructor copia para la posición
 	public Posicion (Posicion posicion) {
 		if(posicion == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
@@ -29,6 +31,7 @@ public class Posicion {
 		return fila;
 	}
 	
+	//Restricción de fila
 	public void setFila(int fila) {
 		if (fila < 1 || fila > 8)
 		{
@@ -42,6 +45,7 @@ public class Posicion {
 		return columna;
 	}
 	
+	//Restricción de columna
 	public void setColumna(char columna) {
 		if (columna < 'a' || columna > 'h') 
 		{
