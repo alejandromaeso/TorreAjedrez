@@ -1,4 +1,9 @@
 package org.iesalandalus.programacion.torreajedrez;
+import java.util.Objects;
+
+//Importamos el siguiente paquete para poder utilizar la excepción "OperationNotSupportedException" en el método movimiento
+import javax.naming.OperationNotSupportedException;
+
 
 public class Torre {
 
@@ -14,6 +19,9 @@ public class Torre {
 	}
 
 	public void setColor(Color color) {
+		if (color == null) {
+			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+			}
 		this.color = color;
 	}
 
@@ -22,6 +30,9 @@ public class Torre {
 	}
 
 	public void setPosicion(Posicion posicion) {
+		if (posicion == null) {
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+			}
 		this.posicion = posicion;
 	}
 
@@ -35,15 +46,11 @@ public class Torre {
 	// torre de dicho color '1h' blanca // '8h' negra
 
 	public Torre(Color color) {
-		this.color = color;
-		if (color == Color.BLANCO) {
+		setColor(color);
+		if (color.equals(Color.BLANCO)) {
 			posicion = new Posicion(1, 'h');
-		}
-		if (color == Color.NEGRO) {
+		}else {
 			posicion = new Posicion(8, 'h');
-		}
-		if (color == null) {
-			throw new IllegalArgumentException("ERROR: No se puede asignar un color nulo.");
 		}
 	}
 
@@ -52,8 +59,8 @@ public class Torre {
 
 	public Torre(Color color, char columna) {
 		this.color = color;
-		if (columna == 'a' || columna == 'h') {
-			if (this.color == Color.BLANCO) {
+		if (columna == 'a' || columna == 'h'|| columna == 'A' || columna == 'H') {
+			if (color.equals(Color.BLANCO)) {
 				posicion = new Posicion(1, columna);
 			} else {
 				posicion = new Posicion(8, columna);
@@ -61,9 +68,88 @@ public class Torre {
 		} else {
 			throw new IllegalArgumentException("ERROR: Columna no válida.");
 		}
-		if (this.color == null) {
-			throw new IllegalArgumentException("ERROR: No se puede asignar un color nulo.");
+	}
+	
+	//Método mover que acepta como parámetro una DIrección y la cantidad de pasos a mover en dicha dirección. 
+		
+	public void mover (Direccion direccion, int pasos) throws OperationNotSupportedException {
+		if (pasos < 1)
+		{
+			throw new IllegalArgumentException("ERROR: El número de pasos debe ser positivo.");
+		} else if (direccion == null) {
+			throw new IllegalArgumentException("ERROR: La dirección no puede ser nula.");
 		}
+		switch(direccion) {
+			case ARRIBA:
+				if (color == Color.NEGRO) {
+					try {
+						setPosicion(new Posicion(posicion.getFila() - pasos, posicion.getColumna()));
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				} else {
+					try {
+						setPosicion(new Posicion(posicion.getFila() + pasos, posicion.getColumna()));
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				}
+			break;	
+			case ABAJO:
+				if (color == Color.NEGRO) {
+					try {
+						setPosicion(new Posicion(posicion.getFila() + pasos, posicion.getColumna()));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				} else {
+					try {
+						setPosicion(new Posicion(posicion.getFila() - pasos, posicion.getColumna()));
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				}
+			break;
+			case DERECHA:
+				if (color == Color.NEGRO) {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				} else {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				}
+			break;
+			case IZQUIERDA:
+				if (color == Color.NEGRO) {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				} else {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				}
+			break;
+			default:
+				throw new NullPointerException("ERROR: La dirección no puede ser nula");
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 	}
 
-}
