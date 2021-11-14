@@ -170,7 +170,28 @@ public class Torre {
 			break;
 		}
 	}
+
+	//Métodos equals y hashCode
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(color, posicion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Torre other = (Torre) obj;
+		return color == other.color && Objects.equals(posicion, other.posicion);
+	}
 		
+
+	
 	
 		
 		
