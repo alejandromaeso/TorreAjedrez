@@ -58,12 +58,12 @@ public class Torre {
 	// Crea la torre en "1-A" si es blanca y en "8-N" si es negra
 
 	public Torre(Color color, char columna) {
-		this.color = color;
+		setColor(color);
 		if (columna == 'a' || columna == 'h'|| columna == 'A' || columna == 'H') {
 			if (color.equals(Color.BLANCO)) {
-				posicion = new Posicion(1, columna);
+				setPosicion(new Posicion(1, columna));
 			} else {
-				posicion = new Posicion(8, columna);
+				setPosicion(new Posicion(8, columna));
 			}
 		} else {
 			throw new IllegalArgumentException("ERROR: Columna no válida.");
@@ -77,7 +77,7 @@ public class Torre {
 		{
 			throw new IllegalArgumentException("ERROR: El número de pasos debe ser positivo.");
 		} else if (direccion == null) {
-			throw new IllegalArgumentException("ERROR: La dirección no puede ser nula.");
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
 		}
 		switch(direccion) {
 			case ARRIBA:
@@ -189,6 +189,14 @@ public class Torre {
 		Torre other = (Torre) obj;
 		return color == other.color && Objects.equals(posicion, other.posicion);
 	}
+
+	@Override
+	public String toString() {
+		return "fila=" + posicion.getFila() + ", columna=" + posicion.getColumna() + ", color=" + color;
+	}
+
+	
+	
 		
 
 	
