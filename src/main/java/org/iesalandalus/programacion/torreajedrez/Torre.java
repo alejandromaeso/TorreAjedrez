@@ -110,21 +110,6 @@ public class Torre {
 					}
 				}
 			break;
-			case DERECHA:
-				if (color == Color.NEGRO) {
-					try {
-						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos)));
-					} catch(IllegalArgumentException e) {
-						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
-					}
-				} else {
-					try {
-						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos)));
-					} catch(IllegalArgumentException e) {
-						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
-					}
-				}
-			break;
 			case IZQUIERDA:
 				if (color == Color.NEGRO) {
 					try {
@@ -140,15 +125,53 @@ public class Torre {
 					}
 				}
 			break;
+			case DERECHA:
+				if (color == Color.NEGRO) {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				} else {
+					try {
+						setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos)));
+					} catch(IllegalArgumentException e) {
+						throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+					}
+				}
+			break;
 			default:
 				throw new NullPointerException("ERROR: La dirección no puede ser nula");
 			}
 		}
+	
+	//Metodo enrocar que acepte como parámetro una Dirección válida para enrocar
+	
+	public void enrocar (Direccion direccion) throws OperationNotSupportedException {
+		if (direccion == null) {
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+		}
+		switch (direccion) {
+		case ENROQUE_CORTO:
+			if (posicion.getColumna() == 'h' && (posicion.getFila() == 1 || posicion.getFila() == 8)) {
+				setPosicion(new Posicion(posicion.getFila(), 'f'));
+			} else {
+				throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+			}
+			break;
+		case ENROQUE_LARGO:
+			if (posicion.getColumna() == 'a' && (posicion.getFila() == 1 || posicion.getFila() == 8)) {
+				setPosicion(new Posicion(posicion.getFila(), 'd'));
+			} else {
+				throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+			}
+			break;
+		default:
+			break;
+		}
+	}
 		
-		
-		
-		
-		
+	
 		
 		
 	}
