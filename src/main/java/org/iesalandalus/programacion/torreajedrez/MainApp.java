@@ -35,16 +35,38 @@ public class MainApp {
 	}
 	
 	private static int elegirOpcion() {
-		int opcion;
+		int opcionMenu;
 		
 		do {
 			System.out.println("Por favor, elija una opción.");
-			opcion = Entrada.entero();
-		} while (opcion < 1 || opcion > 5);
-		return opcion;
+			opcionMenu = Entrada.entero();
+		} while (opcionMenu < 1 || opcionMenu > 5);
+		return opcionMenu;
 	}
 	
+	private static Color elegirColor() {
+		Color color = null;
+		int colorTorre = 0;
+		
+		do {
+			System.out.println("---------------------------");
+			System.out.println("Por favor, elija un color: ");
+			System.out.println("Color BLANCO: 1");
+			System.out.println("Color NEGRO: 2");
+			System.out.println("---------------------------");
+			colorTorre = Entrada.entero();
+		} while (colorTorre != 1 && colorTorre != 2);
+		
+		switch (colorTorre) {
 	
+		case 1:
+			color=color.BLANCO;
+		break;
+		case 2:
+			color = color.NEGRO;	
+		}
+		return color;		
+	}
 	
 }
 		
