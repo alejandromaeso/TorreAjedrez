@@ -47,7 +47,7 @@ public class Torre {
 
 	public Torre(Color color) {
 		setColor(color);
-		if (color.equals(Color.BLANCO)) {
+		if (this.color.equals(Color.BLANCO)) {
 			posicion = new Posicion(1, 'h');
 		}else {
 			posicion = new Posicion(8, 'h');
@@ -192,7 +192,7 @@ public class Torre {
 
 	@Override
 	public String toString() {
-		return "fila=" + posicion.getFila() + ", columna=" + posicion.getColumna() + ", color=" + color;
+		return posicion+ ", color=" + color;
 	}
 
 	
