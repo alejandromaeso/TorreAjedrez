@@ -26,11 +26,11 @@ public class MainApp {
 	
 	private static void mostrarMenu() {
 		System.out.println("----------------------------------------------------------------------------");
-		System.out.println("Si quiere crear una torre por defecto pulse: 1");
-		System.out.println("Si quiere crear una torre eligiendo el color pulse: 2");
-		System.out.println("Si quiere crear una torre elegiendo el color y la posición inicial pulse: 3");
-		System.out.println("Si quiere mover la torre pulse: 4");
-		System.out.println("Para SALIR pulse: 5");
+		System.out.println("Si quiere crear una torre por defecto, pulse: 1");
+		System.out.println("Si quiere crear una torre eligiendo el color, pulse: 2");
+		System.out.println("Si quiere crear una torre elegiendo el color y la posición inicial, pulse: 3");
+		System.out.println("Si quiere mover la torre, pulse: 4");
+		System.out.println("Para SALIR, pulse: 5");
 		System.out.println("----------------------------------------------------------------------------");
 	}
 	
@@ -80,6 +80,17 @@ public class MainApp {
 		} while (columnaInicial != 'a' && columnaInicial != 'h' && columnaInicial != 'A' && columnaInicial != 'H');
 		
 		return columnaInicial;
+	}
+	
+	private static void mostrarMenuDirecciones() {
+		System.out.println("-----------------------------------");
+		System.out.println("Para mover ARRIBA, pulse: 1");
+		System.out.println("Para mover ABAJO, pulse: 2");
+		System.out.println("Para mover IZQUIERDA, pulse: 3");
+		System.out.println("Para mover DERECHA, pulse: 4");
+		System.out.println("Para hacer ENROQUE_CORTO, pulse: 5");
+		System.out.println("Para hacer ENROQUE_LARGO, pulse: 6");
+		System.out.println("-----------------------------------");
 	}
 	
 }
