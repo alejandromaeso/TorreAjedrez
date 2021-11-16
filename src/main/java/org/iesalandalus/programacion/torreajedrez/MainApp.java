@@ -41,6 +41,7 @@ public class MainApp {
 			System.out.println("Por favor, elija una opción.");
 			opcionMenu = Entrada.entero();
 		} while (opcionMenu < 1 || opcionMenu > 5);
+		
 		return opcionMenu;
 	}
 	
@@ -65,7 +66,20 @@ public class MainApp {
 		case 2:
 			color = color.NEGRO;	
 		}
+		
 		return color;		
+	}
+	
+	private static char elegirColumnaInicial() {
+		char columnaInicial = 0;
+		
+		do {
+			System.out.println("¿En qué columna quiere iniciar la partida?");
+			System.out.println("Introduzca 'A' o 'H'. por favor.");
+			columnaInicial = Entrada.caracter();
+		} while (columnaInicial != 'a' && columnaInicial != 'h' && columnaInicial != 'A' && columnaInicial != 'H');
+		
+		return columnaInicial;
 	}
 	
 }
