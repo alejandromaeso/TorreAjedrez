@@ -23,6 +23,21 @@ public class MainApp {
 			System.out.println("ERROR: La torre no está creada.");
 		}
 	}
+	
+	private static void mostrarMenu() {
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("Si quiere crear una torre por defecto pulse: 1");
+		System.out.println("Si quiere crear una torre eligiendo el color pulse: 2");
+		System.out.println("Si quiere crear una torre elegiendo el color y la posición inicial pulse: 3");
+		System.out.println("Si quiere mover la torre pulse: 4");
+		System.out.println("Para SALIR pulse: 5");
+		System.out.println("----------------------------------------------------------------------------");
+	}
+	
+	
+	
+	
+	
 }
 		
 		
