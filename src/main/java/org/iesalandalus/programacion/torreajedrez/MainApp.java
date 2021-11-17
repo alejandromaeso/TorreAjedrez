@@ -132,7 +132,11 @@ public class MainApp {
 		torre = new Torre();
 	}
 
-
+	private void crearTorreColor() {
+		torre = new Torre(elegirColor());
+	}
+	
+	
 }
 
 
