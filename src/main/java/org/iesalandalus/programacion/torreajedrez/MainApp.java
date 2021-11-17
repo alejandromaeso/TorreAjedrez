@@ -136,7 +136,9 @@ public class MainApp {
 		torre = new Torre(elegirColor());
 	}
 	
-	
+	private void crearTorreColorColumna() {
+		torre = new Torre(elegirColor(), elegirColumnaInicial());
+	}
 }
 
 
