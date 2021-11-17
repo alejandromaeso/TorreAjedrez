@@ -170,6 +170,45 @@ public class MainApp {
 			}
 		}
 	}
+	
+	/*
+	 	private static void mostrarMenu() {
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("Si quiere crear una torre por defecto, pulse: 1");
+		System.out.println("Si quiere crear una torre eligiendo el color, pulse: 2");
+		System.out.println("Si quiere crear una torre elegiendo el color y la posición inicial, pulse: 3");
+		System.out.println("Si quiere mover la torre, pulse: 4");
+		System.out.println("Para SALIR, pulse: 5");
+		System.out.println("----------------------------------------------------------------------------");
+		
+	 */
+	
+	private void ejecutarOpcion(int) {
+		switch(ejecutarOpcion) {
+		
+		case 1:
+			crearTorreDefecto();
+			break;
+		
+		case 2:
+			crearTorreColor();
+			break;
+		
+		case 3:
+			crearTorreColorColumna();
+			break;
+			
+		case 4:
+			mover();
+			break;
+			
+		case 5:
+			System.out.println("Salir del juego.");
+			break;
+		}
+		
+		
+	}
 
 }
 
