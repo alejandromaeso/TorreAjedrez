@@ -47,7 +47,7 @@ public class Posicion {
 	
 	//Restricción de columna
 	public void setColumna(char columna) {
-		if (columna < 'a' || columna > 'h') 
+		if (columna < 'a' || columna > 'h' ) 
 		{
 			throw new IllegalArgumentException("ERROR: Columna no válida.");
 		}

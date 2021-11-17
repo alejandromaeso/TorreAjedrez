@@ -9,10 +9,23 @@ public class MainApp {
 
 	public static void main(String[] args) {
 		
+		int contador = 1;
+		int boton;
+		
 		System.out.println("------------------------------------");
 		System.out.println("Ajedrez by: Alejandro Maeso Castillo");
 		System.out.println("------------------------------------");
 		
+		do {
+			mostrarMenu();
+			boton = elegirOpcion();
+			ejecutarOpcion(boton);
+			mostrarTorre();
+			
+			if (boton == 5) {
+				contador = 0;				
+			}
+		} while (contador != 0);	
 	}
 		
 	//Métodos
@@ -61,10 +74,10 @@ public class MainApp {
 		switch (colorTorre) {
 	
 		case 1:
-			color=color.BLANCO;
+			color = Color.BLANCO;
 		break;
 		case 2:
-			color = color.NEGRO;	
+			color = Color.NEGRO;	
 		}
 		
 		return color;		
@@ -83,7 +96,7 @@ public class MainApp {
 	}
 	
 	private static void mostrarMenuDirecciones() {
-		System.out.println("-----------------------------------");
+		//System.out.println("-----------------------------------");
 		System.out.println("Para mover ARRIBA, pulse: 1");
 		System.out.println("Para mover ABAJO, pulse: 2");
 		System.out.println("Para mover IZQUIERDA, pulse: 3");
@@ -100,8 +113,8 @@ public class MainApp {
 		do {
 			System.out.println("---------------------------");
 			System.out.println("Por favor, elija un movimiento.");
-			opcionDireccion = Entrada.entero();
 			System.out.println("---------------------------");
+			opcionDireccion = Entrada.entero();
 		} while (opcionDireccion < 1 || opcionDireccion > 6);
 		
 		switch (opcionDireccion) {
@@ -128,19 +141,19 @@ public class MainApp {
 		return direccion;
 	}
 	
-	private void crearTorreDefecto() {
+	private static void crearTorreDefecto() {
 		torre = new Torre();
 	}
 
-	private void crearTorreColor() {
+	private static void crearTorreColor() {
 		torre = new Torre(elegirColor());
 	}
 	
-	private void crearTorreColorColumna() {
+	private static void crearTorreColorColumna() {
 		torre = new Torre(elegirColor(), elegirColumnaInicial());
 	}
 	
-	private void mover() {
+	private static void mover() {
 		Direccion direccion = null;
 		int pasos;
 		direccion = elegirDireccion();
@@ -151,7 +164,7 @@ public class MainApp {
 			mostrarMenuDirecciones();
 			direccion = elegirDireccion();
 			
-			if (direccion.equals(Direccion.ENROQUE_CORTO) || direccion.equals(direccion.ENROQUE_LARGO)) {
+			if (direccion.equals(Direccion.ENROQUE_CORTO) || direccion.equals(Direccion.ENROQUE_LARGO)) {
 				try {
 					torre.enrocar(direccion);
 				} catch (OperationNotSupportedException e) {
@@ -170,21 +183,9 @@ public class MainApp {
 			}
 		}
 	}
-	
-	/*
-	 	private static void mostrarMenu() {
-		System.out.println("----------------------------------------------------------------------------");
-		System.out.println("Si quiere crear una torre por defecto, pulse: 1");
-		System.out.println("Si quiere crear una torre eligiendo el color, pulse: 2");
-		System.out.println("Si quiere crear una torre elegiendo el color y la posición inicial, pulse: 3");
-		System.out.println("Si quiere mover la torre, pulse: 4");
-		System.out.println("Para SALIR, pulse: 5");
-		System.out.println("----------------------------------------------------------------------------");
 		
-	 */
-	
-	private void ejecutarOpcion(int) {
-		switch(ejecutarOpcion) {
+	private static void ejecutarOpcion(int elegirEjecutarOpcion) {
+		switch(elegirEjecutarOpcion) {
 		
 		case 1:
 			crearTorreDefecto();
