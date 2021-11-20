@@ -32,7 +32,10 @@ public class MainApp {
 		} while (contador != 0);	
 	}
 		
-	//Métodos
+	//Métodos:
+	
+	//Método que mostrará por consola la representación de la torre representado por el atributo de clase torre
+	
 	private static void mostrarTorre() {
 		try {
 			System.out.println(torre.toString());
@@ -40,6 +43,8 @@ public class MainApp {
 			System.out.println("ERROR: La torre no está creada.");
 		}
 	}
+	
+	//Metodo que mostrará por consola el menú con las diferentes opciones de nuestro programa.
 	
 	private static void mostrarMenu() {
 		System.out.println("----------------------------------------------------------------------------");
@@ -51,6 +56,9 @@ public class MainApp {
 		System.out.println("----------------------------------------------------------------------------");
 	}
 	
+	//Método que nos mostrará un mensaje para que elijamos una opción del menú anteriormente creado y nos pedirá que introduzcamos por teclado la opción 
+	//hasta que ésta sea valida. Devolverá la opción elegida.
+	
 	private static int elegirOpcion() {
 		int opcionMenu;
 		
@@ -61,6 +69,8 @@ public class MainApp {
 		
 		return opcionMenu;
 	}
+	
+	//Método que nos preguntará que elijamos un color mientras éste no sea válido y dependiendo de la opción elegida devolverá un color u otro.
 	
 	private static Color elegirColor() {
 		Color color = null;
@@ -87,6 +97,8 @@ public class MainApp {
 		return color;		
 	}
 	
+	//Método que nos preguntará que elijamos la columna inicial mientras ésta no sea válida y devolverá la columna elegida.
+	
 	private static char elegirColumnaInicial() {
 		char columnaInicial = 0;
 		
@@ -99,6 +111,8 @@ public class MainApp {
 		return columnaInicial;
 	}
 	
+	//Método que mostrará por consola un menú con las diferentes direcciones que podemos elegir.
+	
 	private static void mostrarMenuDirecciones() {
 		//System.out.println("-----------------------------------");
 		System.out.println("Para mover ARRIBA, pulse: 1");
@@ -109,6 +123,9 @@ public class MainApp {
 		System.out.println("Para hacer ENROQUE_LARGO, pulse: 6");
 		System.out.println("-----------------------------------");
 	}
+	
+	//Nos mostrará un mensaje para que elijamos una opción del menú anteriormente creado y
+	//nos pedirá que introduzcamos por teclado la opción hasta que ésta sea valida. Devolverá la dirección elegida.
 	
 	private static Direccion elegirDireccion() {
 		Direccion direccion = null;
@@ -145,17 +162,25 @@ public class MainApp {
 		return direccion;
 	}
 	
+	//Método que asignará al atributo de clase torre una nueva instancia de una torre creada con el constructor por defecto.
+	
 	private static void crearTorreDefecto() {
 		torre = new Torre();
 	}
 
+	//Método que asignará al atributo de clase torre una nueva instancia de una torre creada con el constructor al que le pasamos el color.
+	
 	private static void crearTorreColor() {
 		torre = new Torre(elegirColor());
 	}
 	
+	//Método que asignará al atributo de clase torre una nueva instancia de una torre creada con el constructor al que le pasamos el color y la columna inicial.
+	
 	private static void crearTorreColorColumna() {
 		torre = new Torre(elegirColor(), elegirColumnaInicial());
 	}
+	
+	//Mostrará un menú con las posibles direcciones, nos preguntará por la dirección y la cantidad de pasos a mover y moverá la torre según esos parámetros.
 	
 	private static void mover() {
 		Direccion direccion = null;
@@ -174,7 +199,7 @@ public class MainApp {
 					System.out.println(e.getMessage());
 					}
 				} else {
-					System.out.println("--");
+					System.out.println("-----------------------------------");
 					System.out.println("¿Cuantos pasos va a mover la torre?");
 					pasos = Entrada.entero();
 					
@@ -187,6 +212,8 @@ public class MainApp {
 		}
 	}
 		
+	//Método que depediendo de la opción pasada como parámetro, actuará en consecuencia.
+	
 	private static void ejecutarOpcion(int elegirEjecutarOpcion) {
 		switch(elegirEjecutarOpcion) {
 		
