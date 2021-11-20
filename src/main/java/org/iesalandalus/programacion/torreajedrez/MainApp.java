@@ -20,8 +20,12 @@ public class MainApp {
 			mostrarMenu();
 			boton = elegirOpcion();
 			ejecutarOpcion(boton);
-			mostrarTorre();
 			
+			if (boton != 5) {
+				
+				mostrarTorre();
+			}
+						
 			if (boton == 5) {
 				contador = 0;				
 			}
@@ -156,7 +160,6 @@ public class MainApp {
 	private static void mover() {
 		Direccion direccion = null;
 		int pasos;
-		direccion = elegirDireccion();
 	
 		if (torre == null) {
 			System.out.println("ERROR: Debe de crear una torre antes de mover.");
@@ -204,11 +207,10 @@ public class MainApp {
 			break;
 			
 		case 5:
-			System.out.println("Salir del juego.");
+			System.out.println("¡Hasta la próxima!");
 			break;
 		}
-		
-		
+
 	}
 
 }

@@ -195,13 +195,5 @@ public class Torre {
 		return posicion+ ", color=" + color;
 	}
 
-	
-	
-		
-
-	
-	
-		
-		
-	}
+}
 
